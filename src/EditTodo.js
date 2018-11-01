@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Input, Button, Card, CardBody } from 'reactstrap';
 
 class EditTodoForm extends Component {
   constructor(props) {
@@ -17,18 +18,20 @@ class EditTodoForm extends Component {
 
   render() {
     return (
-      <div className="EditToDoContainer">
-        <li className="Todo">
-          <input
+      <Card className="EditToDoContainer">
+        <CardBody className="Todo">
+          <Input
             id="value"
             name="value"
             value={this.state.value}
             onChange={this.handleChange}
           />
-        </li>
+        </CardBody>
         <br />
-        <button onClick={() => this.props.handleEditTodo(this.state)}>Save</button>
-      </div>
+        <Button onClick={() => this.props.handleEditTodo(this.state)}>
+          Save
+        </Button>
+      </Card>
     );
   }
 }

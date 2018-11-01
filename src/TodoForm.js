@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Form, FormGroup, Label, Input, Button } from 'reactstrap';
 
 class TodoForm extends Component {
   constructor(props) {
@@ -25,17 +26,17 @@ class TodoForm extends Component {
 
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <label htmlFor="value">Your todo:</label>
-        <input
+      <Form onSubmit={this.handleSubmit}>
+        <Label for="value">Your todo:</Label>
+        <Input
           id="value"
           name="value"
           value={this.state.value}
           onChange={this.handleChange}
         />
 
-        <button>Create Todo</button>
-      </form>
+        <Button>Create Todo</Button>
+      </Form>
     );
   }
 }

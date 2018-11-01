@@ -2,13 +2,15 @@ import React, { Component } from 'react';
 import Todo from './Todo';
 import TodoForm from './TodoForm';
 import EditTodoForm from './EditTodo';
+import { Container } from 'reactstrap';
+
 import uuid from 'uuid/v4';
 
 class TodoList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      todos: [],
+      todos: []
     };
     this.addTodo = this.addTodo.bind(this);
     this.saveTodoEdits = this.saveTodoEdits.bind(this);
@@ -46,7 +48,7 @@ class TodoList extends Component {
       } else {
         return todo;
       }
-    })
+    });
 
     this.setState(st => ({
       todos: st.todos
@@ -55,25 +57,30 @@ class TodoList extends Component {
 
   render() {
     return (
-      <div className="TodoList">
+      <Container className="TodoList">
         {this.state.todos.map(todo => (
           <React.Fragment>
-            {!todo.editable ?
-              (<Todo
+            {!todo.editable ? (
+              <Todo
                 key={todo.id}
                 value={todo.value}
                 editable={false}
                 enableEditTodo={evt => this.makeTodoEditable(todo.id)}
                 handleDeleteTodo={evt => this.removeTodo(todo.id)}
-              />) :
-              (<EditTodoForm dataId={todo.id} currentTodoValue={todo.value} handleEditTodo={this.saveTodoEdits} />)
-            }
+              />
+            ) : (
+              <EditTodoForm
+                dataId={todo.id}
+                currentTodoValue={todo.value}
+                handleEditTodo={this.saveTodoEdits}
+              />
+            )}
             <br />
           </React.Fragment>
         ))}
 
         <TodoForm handleNewTodo={this.addTodo} />
-      </div>
+      </Container>
     );
   }
 }

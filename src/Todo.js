@@ -1,16 +1,20 @@
 import React, { Component } from 'react';
 import './Todo.css';
+import { ListGroup, ListGroupItem, Button, Card, CardBody } from 'reactstrap';
 
 class Todo extends Component {
-
   render() {
     return (
-      <div className="TodoContainer">
-        <li className="Todo">{this.props.value}</li>
+      <Card className="TodoContainer">
+        <CardBody className="Todo">{this.props.value}</CardBody>
         <br />
-        <button onClick={this.props.handleDeleteTodo}>Remove</button>
-        <button onClick={this.props.enableEditTodo}>Edit</button>
-      </div>
+        <Button className="m-2" onClick={this.props.handleDeleteTodo}>
+          Remove
+        </Button>
+        <Button className="m-2" onClick={this.props.enableEditTodo}>
+          Edit
+        </Button>
+      </Card>
     );
   }
 }

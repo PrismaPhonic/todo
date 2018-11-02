@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Input, Button, Card, CardBody } from 'reactstrap';
+import './TodoForm.css';
 
 class EditTodoForm extends Component {
   constructor(props) {
@@ -28,7 +29,11 @@ class EditTodoForm extends Component {
           />
         </CardBody>
         <br />
-        <Button onClick={() => this.props.handleEditTodo(this.state)}>
+        <Button
+          className="m-2"
+          color="primary"
+          onClick={() => this.props.handleEditTodo(this.state)}
+        >
           Save
         </Button>
       </Card>
